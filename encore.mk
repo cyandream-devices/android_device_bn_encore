@@ -29,6 +29,10 @@ PRODUCT_COPY_FILES += \
     device/bn/encore/ueventd.encore.rc:root/ueventd.encore.rc \
     device/bn/encore/fstab.encore:root/fstab.encore
 
+PRODUCT_PACKAGES += \
+    fsfinder \
+    configure_vold.sh
+
 # key mapping and touchscreen files
 PRODUCT_COPY_FILES += \
     device/bn/encore/prebuilt/usr/idc/cyttsp-i2c.idc:/system/usr/idc/cyttsp-i2c.idc \
@@ -154,9 +158,14 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
         $(LOCAL_PATH)/ramdisk_tools.sh:ramdisk_tools.sh
 
-# postrecoveryboot for recovery
+# additions to recovery
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/recovery/postrecoveryboot.sh:recovery/root/sbin/postrecoveryboot.sh
+
+# XXX MAGIC: build process will delete any existing init.*.rc files from the
+# recovery image, then copy this file from the main initramfs to the recovery
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/recovery/init.recovery.encore.rc:root/init.recovery.encore.rc
 
 # Product specfic packages
 PRODUCT_PACKAGES += \

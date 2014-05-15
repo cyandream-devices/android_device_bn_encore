@@ -12,5 +12,3 @@ dd if=/dev/zero of=/rom/devconf/BootCnt bs=1 count=4
 dd if=/dev/zero of=/rom/bcb bs=1 count=1088
 
 umount /rom
-rmdir /rom
-
